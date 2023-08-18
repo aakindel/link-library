@@ -1,0 +1,26 @@
+@import "reset";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply focus-visible:bg-clip-border focus-visible:outline-neutral-700 focus-visible:dark:outline-neutral-200;
+}
+
+:root {
+  @apply text-base;
+
+  ::selection {
+    @apply bg-black/10;
+  }
+
+  &.dark {
+    ::selection {
+      @apply bg-white/10;
+    }
+  }
+}
+
+body {
+  @apply min-h-screen bg-white text-base text-neutral-700 dark:bg-neutral-900 dark:text-neutral-300;
+}
