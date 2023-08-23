@@ -2,12 +2,12 @@
 
 import type { NextPage } from "next";
 import React, { useState } from "react";
-import ThemeChanger from "@/components/ThemeChanger";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import PageTitle from "./PageTitle";
 import AddLinkDialog from "./AddLinkDialog";
 import { useLinkStore } from "./store";
 import LinkCard from "./LinkCard";
+import PageDropdown from "./PageDropdown";
 
 const Home: NextPage = () => {
   const addedLinks = useLinkStore((state) => state.addedLinks);
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         <div className="mx-auto flex h-[60px] w-full max-w-7xl flex-wrap items-center justify-end px-4">
           <ul className="flex list-none items-center gap-4 sm:gap-4">
             <li className="block">
-              <ThemeChanger />
+              <PageDropdown />
             </li>
           </ul>
         </div>
