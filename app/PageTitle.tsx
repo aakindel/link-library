@@ -10,7 +10,7 @@ const PageTitle = () => {
 
   return (
     <ContentEditable
-      className="mb-10 text-3xl font-semibold"
+      className="mb-10 text-3xl font-semibold text-neutral-700 dark:text-neutral-300"
       placeholder="Untitled"
       tag="h1"
       preventNewLine

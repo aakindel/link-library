@@ -21,7 +21,7 @@ const LinkCard = ({
           : "h-full w-full rounded-md border border-solid border-neutral-200 bg-white hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-900"
       )}
     >
-      <div className="flex items-center gap-2.5 px-2.5 py-4">
+      <div className="flex h-full items-center gap-2.5 px-2.5 py-4">
         <div className="min-w-8">
           {"isLoading" in link ? (
             <Skeleton className="flex h-8 w-8 items-center justify-center rounded-md bg-neutral-100 dark:bg-neutral-800" />
@@ -41,7 +41,7 @@ const LinkCard = ({
           {"isLoading" in link ? (
             <Skeleton className="h-[20px] w-full rounded-md" />
           ) : (
-            <span className="line-clamp-2 max-h-[40px] w-full overflow-hidden text-ellipsis whitespace-normal break-words text-sm font-medium leading-[20px] text-neutral-700 dark:text-neutral-400">
+            <span className="line-clamp-2 max-h-[40px] w-full overflow-hidden text-ellipsis whitespace-normal break-words text-sm font-medium leading-[20px] text-neutral-700 dark:text-neutral-300">
               {link.title ? link.title : link.url}
             </span>
           )}
