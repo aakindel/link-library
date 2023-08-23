@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 const getLinkMetadata = async (url: string): Promise<LinkMetadataType> => {
   const hostname = new URL(url).hostname;
   const metadata = await urlMetadata(url);
-  console.log(JSON.stringify(metadata, null, 2));
+  // console.log(JSON.stringify(metadata, null, 2));
 
   const metadataTitle = getFirstKnownValue([
     metadata["og:title"],
