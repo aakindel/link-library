@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import ContentEditable from "@/components/ContentEditable";
 
-export const PageTitle = () => {
+const PageTitle = () => {
   const defaultPageTitle = "Editable Page Title";
   const [, setPageTitle] = useState(defaultPageTitle);
   const [pageTitleClone] = useState(defaultPageTitle);
