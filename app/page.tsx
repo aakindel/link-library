@@ -6,8 +6,11 @@ import ThemeChanger from "@/components/ThemeChanger";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import PageTitle from "./PageTitle";
 import AddLinkDialog from "./AddLinkDialog";
+import { useLinkStore } from "./store";
+import LinkCard from "./LinkCard";
 
 const Home: NextPage = () => {
+  const addedLinks = useLinkStore((state) => state.addedLinks);
   const [showAddLinkDialog, setShowAddLinkDialog] = useState(false);
 
   return (
@@ -26,7 +29,10 @@ const Home: NextPage = () => {
             <AddLinkDialog
               showAddLinkDialog={showAddLinkDialog}
               setShowAddLinkDialog={setShowAddLinkDialog}
-            ></AddLinkDialog>
+            />
+            {addedLinks.map((addedLink, index) => {
+              return <LinkCard key={index} link={addedLink} />;
+            })}
           </div>
           <button
             className="z-90 fixed bottom-10 right-10 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-neutral-800 shadow-md transition-colors duration-100 hover:bg-neutral-700 dark:bg-neutral-100 dark:hover:bg-neutral-200"
