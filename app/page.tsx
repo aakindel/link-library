@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import PageTitle from "./PageTitle";
 import AddLinkDialog from "./AddLinkDialog";
-import { useLinkStore } from "./store";
+import { useLinkStore, useLinkStoreHydration } from "./store";
 import LinkCard from "./LinkCard";
 import PageDropdown from "./PageDropdown";
 import DeleteAllLinksDialog from "./DeleteAllLinksDialog";
@@ -15,6 +15,7 @@ import { useLocalState } from "@/hooks/useLocalState";
 const Home: NextPage = () => {
   const addedLinks = useLinkStore((state) => state.addedLinks);
   const [showAddLinkDialog, setShowAddLinkDialog] = useState(false);
+  const isLinkStoreHydrated = useLinkStoreHydration();
   const [showDeleteAllLinksDialog, setShowDeleteAllLinksDialog] =
     useState(false);
 
@@ -32,7 +33,7 @@ const Home: NextPage = () => {
     );
   }, [setPageTitleClone]);
 
-  return pageTitleClone !== undefined ? (
+  return isLinkStoreHydrated && pageTitleClone !== undefined ? (
     <React.Fragment>
       <main>
         <div className="mx-auto flex h-[60px] w-full max-w-7xl flex-wrap items-center justify-end px-4">
