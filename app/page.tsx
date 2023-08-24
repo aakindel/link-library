@@ -1,7 +1,7 @@
 "use client";
 
 import type { NextPage } from "next";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import PageTitle from "./PageTitle";
 import AddLinkDialog from "./AddLinkDialog";
@@ -9,6 +9,8 @@ import { useLinkStore } from "./store";
 import LinkCard from "./LinkCard";
 import PageDropdown from "./PageDropdown";
 import DeleteAllLinksDialog from "./DeleteAllLinksDialog";
+import { Spinner } from "@/components/Spinner";
+import { useLocalState } from "@/hooks/useLocalState";
 
 const Home: NextPage = () => {
   const addedLinks = useLinkStore((state) => state.addedLinks);
@@ -16,7 +18,21 @@ const Home: NextPage = () => {
   const [showDeleteAllLinksDialog, setShowDeleteAllLinksDialog] =
     useState(false);
 
-  return (
+  const pageTitleKey = "page-title";
+  const defaultPageTitle = "Editable Page Title";
+  const [, setPageTitle] = useLocalState(pageTitleKey, defaultPageTitle);
+  const [pageTitleClone, setPageTitleClone] = useState<string | undefined>(
+    undefined
+  );
+
+  useEffect(() => {
+    const localPageTitle = localStorage.getItem(pageTitleKey);
+    setPageTitleClone(
+      localPageTitle !== null ? JSON.parse(localPageTitle) : "defaultPageTitle"
+    );
+  }, [setPageTitleClone]);
+
+  return pageTitleClone !== undefined ? (
     <React.Fragment>
       <main>
         <div className="mx-auto flex h-[60px] w-full max-w-7xl flex-wrap items-center justify-end px-4">
@@ -33,7 +49,10 @@ const Home: NextPage = () => {
           </ul>
         </div>
         <div className="mx-auto min-h-[calc(100vh-60px)] max-w-7xl px-4">
-          <PageTitle />
+          <PageTitle
+            pageTitleClone={pageTitleClone}
+            setPageTitle={setPageTitle}
+          />
           <div className="mb-20 grid h-full w-full max-w-full grid-flow-dense grid-cols-1 gap-4 text-sm sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-4 lg:gap-6">
             <AddLinkDialog
               showAddLinkDialog={showAddLinkDialog}
@@ -54,6 +73,13 @@ const Home: NextPage = () => {
         </div>
       </main>
     </React.Fragment>
+  ) : (
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-2.5">
+      <Spinner className="h-7 w-7 text-neutral-400 dark:text-neutral-500" />
+      <span className="block text-sm text-neutral-400 dark:text-neutral-500">
+        Loading link page...
+      </span>
+    </div>
   );
 };
 
