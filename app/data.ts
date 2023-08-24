@@ -24,14 +24,12 @@ export const prefillLinks = [
   },
   {
     id: uuidv4(),
-    logo: "https://icons.duckduckgo.com/ip3/github.com.ico",
-    url: "https://github.com/shadcn-ui/ui",
+    logo: "https://icons.duckduckgo.com/ip3/www.radix-ui.com.ico",
+    url: "https://radix-ui.com/",
     description:
-      "Beautifully designed components built with Radix UI and Tailwind CSS. - GitHub - shadcn-ui/ui: Beautifully designed components built with Radix UI and Tailwind CSS.",
-    image:
-      "https://repository-images.githubusercontent.com/585146387/f307ab02-0c46-439b-84e0-319721662dce",
-    title:
-      "GitHub - shadcn-ui/ui: Beautifully designed components built with Radix UI and Tailwind CSS.",
+      "An open source component library for building modern React apps that helps you build faster and makes it easy to create beautiful, accessible interfaces that are a breeze to maintain.",
+    image: "https://radix-ui.com/social/themes.png",
+    title: "Themes – Radix UI",
   },
   {
     id: uuidv4(),

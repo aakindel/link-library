@@ -8,10 +8,13 @@ import AddLinkDialog from "./AddLinkDialog";
 import { useLinkStore } from "./store";
 import LinkCard from "./LinkCard";
 import PageDropdown from "./PageDropdown";
+import DeleteAllLinksDialog from "./DeleteAllLinksDialog";
 
 const Home: NextPage = () => {
   const addedLinks = useLinkStore((state) => state.addedLinks);
   const [showAddLinkDialog, setShowAddLinkDialog] = useState(false);
+  const [showDeleteAllLinksDialog, setShowDeleteAllLinksDialog] =
+    useState(false);
 
   return (
     <React.Fragment>
@@ -19,7 +22,13 @@ const Home: NextPage = () => {
         <div className="mx-auto flex h-[60px] w-full max-w-7xl flex-wrap items-center justify-end px-4">
           <ul className="flex list-none items-center gap-4 sm:gap-4">
             <li className="block">
-              <PageDropdown />
+              <PageDropdown
+                setShowDeleteAllLinksDialog={setShowDeleteAllLinksDialog}
+              />
+              <DeleteAllLinksDialog
+                showDeleteAllLinksDialog={showDeleteAllLinksDialog}
+                setShowDeleteAllLinksDialog={setShowDeleteAllLinksDialog}
+              />
             </li>
           </ul>
         </div>

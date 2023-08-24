@@ -9,12 +9,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/DropdownMenu";
-import { EllipsisHorizontalIcon } from "@heroicons/react/24/outline";
+import { EllipsisHorizontalIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useTheme } from "next-themes";
 import { useState } from "react";
 import { ThemeChangerSwitch } from "@/components/ThemeChanger";
 
-export default function PageDropdown() {
+export default function PageDropdown({
+  setShowDeleteAllLinksDialog,
+}: {
+  setShowDeleteAllLinksDialog: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const addedLinks = useLinkStore((state) => state.addedLinks);
   const { resolvedTheme, setTheme } = useTheme();
   const [isDarkMode, setIsDarkMode] = useState(resolvedTheme === "dark");
@@ -48,6 +52,14 @@ export default function PageDropdown() {
             isDarkMode={isDarkMode}
             changeTheme={changeTheme}
           />
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onSelect={() => setShowDeleteAllLinksDialog(true)}
+        >
+          <TrashIcon className="mr-2.5 h-4 w-4 stroke-2 text-neutral-600" />
+          Delete all links
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <div className="flex flex-col gap-1 px-2 py-1.5 text-xs text-neutral-500">
