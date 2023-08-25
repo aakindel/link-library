@@ -11,6 +11,7 @@ import PageDropdown from "./PageDropdown";
 import DeleteAllLinksDialog from "./DeleteAllLinksDialog";
 import { Spinner } from "@/components/Spinner";
 import { useLocalState } from "@/hooks/useLocalState";
+import MasonryGrid from "@/components/MasonryGrid";
 
 const Home: NextPage = () => {
   const addedLinks = useLinkStore((state) => state.addedLinks);
@@ -54,17 +55,21 @@ const Home: NextPage = () => {
             pageTitleClone={pageTitleClone}
             setPageTitle={setPageTitle}
           />
-          <div className="mb-20 grid h-full w-full max-w-full grid-flow-dense grid-cols-1 gap-4 text-sm sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-4 lg:gap-6">
-            <AddLinkDialog
-              showAddLinkDialog={showAddLinkDialog}
-              setShowAddLinkDialog={setShowAddLinkDialog}
-            />
+          <AddLinkDialog
+            showAddLinkDialog={showAddLinkDialog}
+            setShowAddLinkDialog={setShowAddLinkDialog}
+          />
+          <MasonryGrid
+            breakpointColumns={{ 640: 2, 768: 3, 1024: 4 }}
+            gutterWidth={24}
+            gutterHeight={24}
+          >
             {addedLinks.map((addedLink, index) => {
               return <LinkCard key={index} link={addedLink} />;
             })}
-          </div>
+          </MasonryGrid>
           <button
-            className="z-90 fixed bottom-10 right-10 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-neutral-800 shadow-md transition-colors duration-100 hover:bg-neutral-700 dark:bg-neutral-100 dark:hover:bg-neutral-200"
+            className="fixed bottom-10 right-10 z-[90] flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-neutral-800 shadow-md transition-colors duration-100 hover:bg-neutral-700 dark:bg-neutral-100 dark:hover:bg-neutral-200"
             onClick={() => {
               setShowAddLinkDialog(true);
             }}

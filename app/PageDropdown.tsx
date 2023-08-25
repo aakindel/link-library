@@ -55,6 +55,7 @@ export default function PageDropdown({
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
+          disabled={!addedLinks.length}
           className="cursor-pointer"
           onSelect={() => setShowDeleteAllLinksDialog(true)}
         >
