@@ -29,9 +29,13 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     const localPageTitle = localStorage.getItem(pageTitleKey);
-    setPageTitleClone(
-      localPageTitle !== null ? JSON.parse(localPageTitle) : "defaultPageTitle"
-    );
+    setTimeout(() => {
+      setPageTitleClone(
+        localPageTitle !== null
+          ? JSON.parse(localPageTitle)
+          : "defaultPageTitle"
+      );
+    }, 250);
   }, [setPageTitleClone]);
 
   return isLinkStoreHydrated && pageTitleClone !== undefined ? (
@@ -50,7 +54,7 @@ const Home: NextPage = () => {
             </li>
           </ul>
         </div>
-        <div className="mx-auto min-h-[calc(100vh-60px)] max-w-7xl px-4">
+        <div className="mx-auto min-h-[calc(100vh-60px)] max-w-7xl px-4 pb-32">
           <PageTitle
             pageTitleClone={pageTitleClone}
             setPageTitle={setPageTitle}

@@ -42,12 +42,12 @@ export const prefillLinks = [
   },
   {
     id: uuidv4(),
-    logo: "https://icons.duckduckgo.com/ip3/stackoverflow.com.ico",
-    url: "https://stackoverflow.com/",
+    logo: "https://icons.duckduckgo.com/ip3/stripe.com.ico",
+    url: "https://stripe.com/",
     description:
-      "Stack Overflow | The World's Largest Online Community for Developers",
+      "Stripe is a suite of APIs powering online payment processing and commerce solutions for internet businesses of all sizes. Accept payments and scale faster.",
     image:
-      "https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon@2.png?v=73d79a89bded",
-    title: "Stack Overflow - Where Developers Learn, Share, & Build Careers",
+      "https://images.ctfassets.net/fzn2n1nzq965/3AGidihOJl4nH9D1vDjM84/9540155d584be52fc54c443b6efa4ae6/homepage.png?q=80",
+    title: "Stripe | Payment Processing Platform for the Internet",
   },
 ];
