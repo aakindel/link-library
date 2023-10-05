@@ -47,7 +47,7 @@ export default function AddLinkDialog({
           </div>
         </DialogTrigger>
       )}
-      <DialogContent className="w-96 p-3">
+      <DialogContent className="p-3">
         <div className="flex flex-col gap-2.5">
           <LinkForm closeDialog={() => setShowAddLinkDialog(false)} />
         </div>
